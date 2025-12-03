@@ -7,4 +7,6 @@ object NavRoutes {
     const val Carrito = "carrito"
     const val Perfil = "perfil"
     const val Sucursales = "sucursales"
+    const val ApiPostres = "api_postres"
 }
+

@@ -57,6 +57,13 @@ fun MenuScreen(onNavigate: (String) -> Unit) {
                         style = MaterialTheme.typography.bodyMedium,
                         color = TextSecondary
                     )
+                    Button(
+                        onClick = { onNavigate(NavRoutes.ApiPostres) },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text("Ver postres desde API externa")
+                    }
+
                 }
             }
 

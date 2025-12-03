@@ -5,8 +5,8 @@ import androidx.compose.ui.graphics.Color
 val DarkBackground = Color(0xFF0D0D0D)
 val CardBlack = Color(0xFF1C1C1E)
 
-val PrimaryGreen = Color(0xFF006BC8)
-val SecondaryBlue = Color(0xFF40C4FF)
+val PrimaryGreen = Color(0xFFE91E63)
+val SecondaryBlue = Color(0xFF181F23)
 val DangerRed = Color(0xFF00BCD4)
 
 val TextWhite = Color(0xFFFFFFFF)

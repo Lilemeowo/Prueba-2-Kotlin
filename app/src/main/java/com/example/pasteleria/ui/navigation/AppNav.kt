@@ -54,5 +54,8 @@ fun AppNav() {
         composable(NavRoutes.Sucursales) {
             SucursalesScreen(onBack = { nav.popBackStack() })
         }
+        composable(NavRoutes.ApiPostres) {
+            ApiPostresScreen(onBack = { nav.popBackStack() })
+        }
     }
 }

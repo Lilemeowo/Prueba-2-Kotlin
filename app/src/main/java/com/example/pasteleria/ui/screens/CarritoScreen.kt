@@ -1,6 +1,8 @@
 package com.example.pasteleria.ui.screens
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -8,15 +10,15 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pasteleria.data.DataProductos
 import com.example.pasteleria.ui.viewModel.AppViewModel
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material3.Divider
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CarritoScreen(onBack: () -> Unit) {
     val vm: AppViewModel = viewModel()
     val ids by vm.carrito.collectAsState()
+
+    val productosRemotos by vm.productos.collectAsState()
+    val productos = if (productosRemotos.isNotEmpty()) productosRemotos else DataProductos
 
     Scaffold(
         topBar = {
@@ -40,8 +42,10 @@ fun CarritoScreen(onBack: () -> Unit) {
                 Text("Tu carrito está vacío.")
             } else {
                 ids.forEach { id ->
-                    val p = DataProductos.first { it.id == id }
-                    Text("${p.nombre} — CLP ${p.precio}")
+                    val p = productos.firstOrNull { it.id == id }
+                    if (p != null) {
+                        Text("${p.nombre} — CLP ${p.precio}")
+                    }
                 }
 
                 Divider()
@@ -52,8 +56,6 @@ fun CarritoScreen(onBack: () -> Unit) {
                 Text(
                     text = "Total: CLP $subtotal",
                     style = MaterialTheme.typography.titleLarge
-
-
                 )
 
                 Text(
@@ -78,3 +80,4 @@ fun CarritoScreen(onBack: () -> Unit) {
         }
     }
 }
+
